@@ -11,6 +11,7 @@ export function buildPairingReply(params: {
 }): string {
   const { channel, idLine, code } = params;
   const approveCommand = formatCliCommand(`openclaw pairing approve ${channel} ${code}`);
+  const subdomain = process.env.BRIM_SUBDOMAIN || "control";
   return [
     "OpenClaw: access not configured.",
     "",
@@ -19,6 +20,9 @@ export function buildPairingReply(params: {
     "```",
     code,
     "```",
+    "",
+    "Or complete pairing on the dashboard:",
+    `https://${subdomain}.brimmini.com/onboarding/complete`,
     "",
     "Ask the bot owner to approve with:",
     "```",
