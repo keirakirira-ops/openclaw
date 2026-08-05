@@ -59,10 +59,12 @@ export async function issuePairingChallenge(
     id: params.senderId,
     meta: params.meta,
   });
-  if (!created) {
+  if (!code) {
     return { created: false };
   }
-  params.onCreated?.({ code });
+  if (created) {
+    params.onCreated?.({ code });
+  }
   const accountId = params.accountId ? normalizeAccountId(params.accountId) : undefined;
   // Notification/audit hooks must not delay the pairing-code reply.
   void runPairingRequestedHook({
