@@ -21,7 +21,7 @@ export function buildPairingReply(params: {
     "```",
     "",
     "Or complete pairing on the dashboard:",
-    "https://app.brimmini.com/onboarding/complete",
+    `https://app.brimmini.com/onboarding/complete?code=${code}`,
     "",
     "Ask the bot owner to approve with:",
     "```",
